@@ -19,6 +19,12 @@ def extract_symbol_from_input(input_message):
             symbol = input_message[hashtag_index + 1:hashtag_index + space_index]
         return symbol
 
+def clean_up_df(df):
+# outputs string; price rounds to hundreds; string should look nice
+    dollar_columns = ['Open','High','Low','Close','Adj Close']
+    df[dollar_columns] = df [dollar_columns].apply(lambda num: round(num,2))
+    print (df)
+
 def generate_output (input_message):
     symbol = extract_symbol_from_input(input_message)
     if symbol:

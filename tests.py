@@ -1,5 +1,5 @@
 import unittest
-from market_bot import extract_symbol_from_input, get_stock_data
+from market_bot import extract_symbol_from_input, get_stock_data, clean_up_df
 import pandas as pd
 # self.assertTime()
 # selfassert(False)
@@ -18,6 +18,9 @@ class TestSuite(unittest.TestCase):
         output_data = get_stock_data('aapl')
         self.assertTrue(isinstance(output_data, pd.DataFrame) )
         self.assertTrue ('Open' in output_data.columns )
+    def test_clean_up_df(self):
+        df = get_stock_data('aapl')
+        clean_up_df(df)
 
 
 unittest.main()
