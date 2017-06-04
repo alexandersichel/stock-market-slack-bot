@@ -57,5 +57,3 @@ def generate_output (input_message):
         return clean_up_df(df)
     else:
         return "Loser"
-
-
