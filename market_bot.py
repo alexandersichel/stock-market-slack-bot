@@ -3,6 +3,7 @@ import datetime
 from datetime import timedelta
 
 def get_stock_data(symbol,two_days_prior = True):
+    '''input stock ticker as strings, uses it to find stock data from API as dataframe (falls to google if yahoo is down'''
     current_time = datetime.date.today()
     if two_days_prior:
         current_time = datetime.datetime.now() - timedelta(days = 2)
@@ -16,6 +17,7 @@ def get_stock_data(symbol,two_days_prior = True):
             return False
 
 def extract_symbol_from_input(input_message):
+    '''takes user inputted string as input and extracts stock symbol as output or none'''
     if "stock" in input_message and '#' in input_message:
         hashtag_index = input_message.find('#')
         space_index = input_message[hashtag_index:].find(' ')
