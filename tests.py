@@ -1,6 +1,7 @@
 import unittest
 from market_bot import extract_symbol_from_input, get_stock_data, clean_up_df
 import pandas as pd
+from slack_api import get_websocket_url
 # self.assertTime()
 # selfassert(False)
 # selfassertEqual(,)
@@ -21,6 +22,8 @@ class TestSuite(unittest.TestCase):
     def test_clean_up_df(self):
         df = get_stock_data('aapl')
         clean_up_df(df)
+    def test_get_websocket_url(self):
+        self.assertTrue(get_websocket_url())
 
 
 unittest.main()
