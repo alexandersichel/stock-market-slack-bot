@@ -1,4 +1,4 @@
-import unittest
+import unittest, sys
 from market_bot import extract_symbol_from_input, get_stock_data, clean_up_df
 import pandas as pd
 from slack_api import get_websocket_url
@@ -24,6 +24,9 @@ class TestSuite(unittest.TestCase):
         clean_up_df(df)
     def test_get_websocket_url(self):
         self.assertTrue(get_websocket_url())
+    def test_python_version (self):
+        self.assertTrue(sys.version_info.major >= 3)
 
 
-unittest.main()
+
+unittest.main(verbosity = True)
