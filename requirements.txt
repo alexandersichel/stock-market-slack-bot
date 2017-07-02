@@ -1,4 +1,8 @@
 websocket-client
+
 pandas
+
 pandas-datareader
+
 requests
+flask
