@@ -1,7 +1,5 @@
 # https://slack.com/api/rtm.start
 
-# xoxb-158497994468-l15u2syrc8XQGSgNv2oNyswX
-
 import os, requests, websocket, json
 # print (os.environ)
 from idgenerator import id_generator

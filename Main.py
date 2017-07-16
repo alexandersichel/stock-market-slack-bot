@@ -1,5 +1,6 @@
 from slack_api import *
 from flask import Flask
+import os
 
 app = Flask (__name__)
 
@@ -8,7 +9,7 @@ app = Flask (__name__)
 def main_page():
     return 'hello world'
 
-app.run (host = '0.0.0.0', port = 3000)
+app.run (host = '0.0.0.0', port = os.environ.get("PORT",8080))
 
 # url = get_websocket_url()
 # connect (url)
