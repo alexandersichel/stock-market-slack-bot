@@ -1,5 +1,5 @@
 from slack_api import *
-from flask import Flask
+from flask import Flask, request
 import os
 
 app = Flask (__name__)
@@ -8,6 +8,12 @@ app = Flask (__name__)
 @app.route ('/', methods = ['GET'])
 def main_page():
     return 'hello world'
+
+@app.route ('/', method = ['POST'])
+def received_webhook ():
+    data = request.form
+    print ('Receiving Webhook Data')
+    print (data)
 
 app.run (host = '0.0.0.0', port = os.environ.get("PORT",8080))
 
