@@ -9,7 +9,7 @@ app = Flask (__name__)
 def main_page():
     return 'hello world'
 
-@app.route ('/', method = ['POST'])
+@app.route ('/', methods = ['POST'])
 def received_webhook ():
     data = request.form
     print ('Receiving Webhook Data')
