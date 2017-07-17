@@ -2,7 +2,7 @@ from slack_api import *
 from flask import Flask, request
 import os
 from slacker import Slacker
-
+from market_bot import generate_output
 
 app = Flask (__name__)
 Slack_bot = Slacker(os.environ['HackerBotToken'])
