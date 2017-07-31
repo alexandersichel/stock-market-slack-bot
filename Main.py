@@ -18,8 +18,8 @@ def received_webhook ():
     print ('Receiving Webhook Data')
     print (data)
     channel_id = data.get('channel_id')
-    text = data.get ('text')
-    response = generate_output ('text')
+    user_input = data.get ('text')
+    response = generate_output (user_input)
     Slack_bot.chat.post_message(channel_id, response)
     return 'Data Sent'
 
