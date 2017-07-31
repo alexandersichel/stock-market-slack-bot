@@ -1,5 +1,5 @@
 import unittest, sys
-from market_bot import extract_symbol_from_input, get_stock_data, clean_up_df
+from market_bot import extract_symbol_from_input, get_stock_data, clean_up_df, generate_output
 import pandas as pd
 from slack_api import get_websocket_url
 # self.assertTime()
@@ -22,10 +22,10 @@ class TestSuite(unittest.TestCase):
     def test_clean_up_df(self):
         df = get_stock_data('aapl')
         clean_up_df(df)
-    def test_get_websocket_url(self):
-        self.assertTrue(get_websocket_url())
     def test_python_version (self):
         self.assertTrue(sys.version_info.major >= 3)
+    def test_generate_output(self):
+        print (generate_output("@hackerteambot stock #appl"))
 
 
 

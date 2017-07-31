@@ -1,6 +1,7 @@
 import pandas_datareader.data as web
 import datetime
 from datetime import timedelta
+from IPython import embed
 
 def get_stock_data(symbol,two_days_prior = True):
     '''input stock ticker as strings, uses it to find stock data from API as dataframe (falls to google if yahoo is down'''
@@ -35,12 +36,18 @@ def clean_up_df(df):
     df[dollar_columns] = df [dollar_columns].apply(lambda num: round(num,2))
     data_dict = df.to_dict()
     clean_string = ''
+    # embed()
     for key in data_dict:
         timestamp_dict = data_dict[key]
-        timestamp_key = list(timestamp_dict.keys())[0]
+        timestamp_list = list (timestamp_dict.keys())
+        if not timestamp_list:
+            continue
+        timestamp_key = timestamp_list[0]
         value = str(timestamp_dict [timestamp_key])
         # clean_string += key + ': ' + value +'\n'
         clean_string += '%s: %s\n' %(key,value)
+    if not clean_string:
+        return ('No Data Today')
     return clean_string
 
     print (clean_string)
@@ -56,4 +63,4 @@ def generate_output (input_message):
         df = get_stock_data(symbol)
         return clean_up_df(df)
     else:
-        return "Loser"
+        return "Symbol not given"
