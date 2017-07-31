@@ -8,6 +8,7 @@ def get_stock_data(symbol,two_days_prior = True):
     current_time = datetime.date.today()
     if two_days_prior:
         current_time = datetime.datetime.now() - timedelta(days = 2)
+        print ("CUREENT TIME",current_time)
     try:
         return web.DataReader (symbol, "yahoo", current_time, current_time)
     except:
@@ -30,11 +31,13 @@ def extract_symbol_from_input(input_message):
 
 def clean_up_df(df):
 # outputs string; price rounds to hundreds; string should look nice
-    print(df)
+    print("ORIGINAL DF",df)
     # Inolude ability to run Yahoo and Google Data
     dollar_columns = ['Open','High','Low','Close']
     df[dollar_columns] = df [dollar_columns].apply(lambda num: round(num,2))
+    print (df)
     data_dict = df.to_dict()
+    print ("DATA DICT", data_dict)
     clean_string = ''
     # embed()
     for key in data_dict:
@@ -61,6 +64,7 @@ def generate_output (input_message):
     symbol = extract_symbol_from_input(input_message)
     if symbol:
         df = get_stock_data(symbol)
+        print ("DF BEFORE CLEANING", df)
         return clean_up_df(df)
     else:
         return "Symbol not given"

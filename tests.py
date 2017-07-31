@@ -17,6 +17,7 @@ class TestSuite(unittest.TestCase):
 #       TODO
     def test_get_stock_data(self):
         output_data = get_stock_data('aapl')
+        print (output_data)
         self.assertTrue(isinstance(output_data, pd.DataFrame) )
         self.assertTrue ('Open' in output_data.columns )
     def test_clean_up_df(self):
@@ -25,7 +26,7 @@ class TestSuite(unittest.TestCase):
     def test_python_version (self):
         self.assertTrue(sys.version_info.major >= 3)
     def test_generate_output(self):
-        print (generate_output("@hackerteambot stock #appl"))
+        print (generate_output("@hackerteambot stock #aapl"))
 
 
 
